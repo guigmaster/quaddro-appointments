@@ -5,6 +5,7 @@
     "build": "remix build",
     "dev": "remix dev",
     "start": "remix-serve build",
+    "prepare": "husky install",
     "lint": "eslint app/**/* --ext=.js,.ts,.tsx",
     "lint:fix": "eslint app/**/* --ext=.js,.ts,.tsx --fix",
     "prettier": "prettier --write 'app/**/*.{js,ts,tsx}'"
@@ -24,6 +25,8 @@
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   },

@@ -10,14 +10,15 @@ import {
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'New Remix App',
-  viewport: 'width=device-width,initial-scale=1',
+  title: 'Quaddro Appoitments',
+  viewport: 'width=device-width,initial-scale=1.0',
 });
 
 export default function App() {
   return (
     <html lang="en">
       <head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <Meta />
         <Links />
       </head>

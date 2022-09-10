@@ -232,3 +232,5 @@ $RECYCLE.BIN/
 /.cache
 /build
 /public/build
+
+/app/tailwind.css

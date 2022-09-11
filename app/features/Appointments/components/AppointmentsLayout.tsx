@@ -1,5 +1,5 @@
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
-import { Outlet, useLocation } from '@remix-run/react';
+import { Link, Outlet, useLocation } from '@remix-run/react';
 
 import type { Appointment } from '../Appointment.types';
 
@@ -36,10 +36,13 @@ export default function AppointmentsLayout({
           </h3>
 
           {!hasAppointmentForm && (
-            <button className="flex items-center justify-center p-3 bg-blue-800 hover:bg-blue-600 rounded text-white">
+            <Link
+              to="new"
+              className="flex items-center justify-center p-3 bg-blue-800 hover:bg-blue-600 rounded text-white"
+            >
               <PlusCircleIcon className="w-5 mr-2" />
               <span>Agendar</span>
-            </button>
+            </Link>
           )}
         </div>
 

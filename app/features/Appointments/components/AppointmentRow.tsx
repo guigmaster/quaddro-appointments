@@ -1,4 +1,5 @@
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
+import { Link } from '@remix-run/react';
 
 import type { Appointment } from '../Appointment.types';
 
@@ -22,12 +23,13 @@ export default function AppointmentRow({ appointment }: AppointmentRowProps) {
       </div>
 
       <div className="flex w-[150px] items-center justify-between">
-        <button
+        <Link
+          to={`edit/${appointment.id}`}
           title="Editar Agendamento"
           className="flex items-center justify-center p-2 hover:bg-indigo-900 text-blue-700 hover:text-white rounded-md"
         >
           <PencilSquareIcon className="w-7 " />
-        </button>
+        </Link>
 
         <button
           title="Apagar Agendamento"

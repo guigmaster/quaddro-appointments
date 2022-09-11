@@ -20,13 +20,13 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" className="h-full">
       <head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="h-full">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

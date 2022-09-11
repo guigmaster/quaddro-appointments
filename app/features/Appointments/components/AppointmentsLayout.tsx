@@ -15,7 +15,8 @@ export default function AppointmentsLayout({
 }: AppointmentsLayoutPros) {
   const { pathname } = useLocation();
 
-  const isNewRoute = pathname.endsWith('/new');
+  const hasAppointmentForm =
+    pathname.includes('/new') || pathname.includes('/edit');
 
   return (
     <main className="relative w-full h-full bg-white">
@@ -34,7 +35,7 @@ export default function AppointmentsLayout({
             <span className="text-sm mt-1">38 Agendamento(s) no total</span>
           </h3>
 
-          {!isNewRoute && (
+          {!hasAppointmentForm && (
             <button className="flex items-center justify-center p-3 bg-blue-800 hover:bg-blue-600 rounded text-white">
               <PlusCircleIcon className="w-5 mr-2" />
               <span>Agendar</span>
@@ -42,7 +43,7 @@ export default function AppointmentsLayout({
           )}
         </div>
 
-        {!isNewRoute && <AppointmentSearchForm />}
+        {!hasAppointmentForm && <AppointmentSearchForm />}
 
         <div className="mt-8">
           {appointments.map(appointment => (

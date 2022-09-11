@@ -1,28 +1,28 @@
-import { useState } from 'react';
 import { Form } from '@remix-run/react';
-import TextInput from '~/_shared/components/TextInput';
+
 import type { ActionData } from '~/routes/appointments/new';
+import type { Appointment } from '../Appointment.types';
+
+import TextInput from '~/_shared/components/TextInput';
 
 type AppointmentFormProps = {
   actionData?: ActionData;
+  appointment?: Appointment;
 };
 
-export default function AppointmentForm({ actionData }: AppointmentFormProps) {
-  const [title, setTitle] = useState(actionData?.data?.title ?? '');
-  const [start_time, setStarTime] = useState(
-    actionData?.data?.start_time ?? '',
-  );
-  const [end_time, setEndTime] = useState(actionData?.data?.end_time ?? '');
-
+export default function AppointmentForm({
+  actionData,
+  appointment,
+}: AppointmentFormProps) {
   return (
     <Form method="post" className="flex flex-col">
-      <div className="">
+      <div>
         <TextInput
           name="title"
           label="Título"
           placeholder="Título para o agendamento"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
+          key={actionData?.data?.title ?? appointment?.title}
+          defaultValue={actionData?.data?.title ?? appointment?.title}
           errorMessage={actionData?.errors?.title ?? ''}
         />
 
@@ -32,8 +32,10 @@ export default function AppointmentForm({ actionData }: AppointmentFormProps) {
               name="start_time"
               label="Agendamento Início"
               placeholder="Início do Agendamento DD/MM/AAAA HH:mm"
-              value={start_time}
-              onChange={e => setStarTime(e.target.value)}
+              key={actionData?.data?.start_time ?? appointment?.start_time}
+              defaultValue={
+                actionData?.data?.start_time ?? appointment?.start_time
+              }
               errorMessage={actionData?.errors?.start_time ?? ''}
             />
           </div>
@@ -43,8 +45,8 @@ export default function AppointmentForm({ actionData }: AppointmentFormProps) {
               name="end_time"
               label="Agendamento Fim"
               placeholder="Final do Agendamento DD/MM/AAAA HH:mm"
-              value={end_time}
-              onChange={e => setEndTime(e.target.value)}
+              key={actionData?.data?.end_time ?? appointment?.end_time}
+              defaultValue={actionData?.data?.end_time ?? appointment?.end_time}
               errorMessage={actionData?.errors?.end_time ?? ''}
             />
           </div>

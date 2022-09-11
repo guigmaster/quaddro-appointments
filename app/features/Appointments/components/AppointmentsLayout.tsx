@@ -1,4 +1,5 @@
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
+import { Outlet, useLocation } from '@remix-run/react';
 
 import type { Appointment } from '../Appointment.types';
 
@@ -12,6 +13,10 @@ type AppointmentsLayoutPros = {
 export default function AppointmentsLayout({
   appointments,
 }: AppointmentsLayoutPros) {
+  const { pathname } = useLocation();
+
+  const isNewRoute = pathname.endsWith('/new');
+
   return (
     <main className="relative w-full h-full bg-white">
       <header className="fixed t-0 w-full h-12 shadow z-10">
@@ -21,19 +26,23 @@ export default function AppointmentsLayout({
       </header>
 
       <div className="flex flex-col container mx-auto px-8 h-full pt-16">
+        <Outlet />
+
         <div className="flex items-center justify-between">
           <h3 className="flex flex-col text-2xl">
             Agendamentos
             <span className="text-sm mt-1">38 Agendamento(s) no total</span>
           </h3>
 
-          <button className="flex items-center justify-center p-3 bg-blue-800 hover:bg-blue-600 rounded text-white">
-            <PlusCircleIcon className="w-5 mr-2" />
-            <span>Agendar</span>
-          </button>
+          {!isNewRoute && (
+            <button className="flex items-center justify-center p-3 bg-blue-800 hover:bg-blue-600 rounded text-white">
+              <PlusCircleIcon className="w-5 mr-2" />
+              <span>Agendar</span>
+            </button>
+          )}
         </div>
 
-        <AppointmentSearchForm />
+        {!isNewRoute && <AppointmentSearchForm />}
 
         <div className="mt-8">
           {appointments.map(appointment => (

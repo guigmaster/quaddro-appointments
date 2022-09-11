@@ -5,12 +5,7 @@ interface TextInputPros extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-export default function TextInput({
-  name,
-  label,
-  value,
-  ...rest
-}: TextInputPros) {
+export default function TextInput({ name, label, ...rest }: TextInputPros) {
   return (
     <div className="flex flex-1 flex-col">
       <label htmlFor={name} className="text-2md text-zinc-600">
@@ -21,7 +16,6 @@ export default function TextInput({
           {...rest}
           type="text"
           name={name}
-          value={value}
           className="w-full h-full px-2 text-zinc-600"
         />
       </div>

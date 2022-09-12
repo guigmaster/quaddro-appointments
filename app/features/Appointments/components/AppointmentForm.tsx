@@ -1,4 +1,4 @@
-import { Form } from '@remix-run/react';
+import { Form, Link } from '@remix-run/react';
 
 import type { ActionData } from '~/routes/appointments/new';
 import type { Appointment } from '../Appointment.types';
@@ -53,13 +53,20 @@ export default function AppointmentForm({
         </div>
       </div>
 
-      <div className="flex mt-8 justify-end">
+      <div className="flex flex-row-reverse mt-8">
         <button
           type="submit"
           className="flex items-center justify-center p-2 rounded bg-blue-600 hover:bg-blue-800 text-white"
         >
           <span>Salvar</span>
         </button>
+
+        <Link
+          to="/appointments"
+          className="flex items-center justify-center p-2 rounded bg-red-400 hover:bg-red-600 text-white mr-2"
+        >
+          <span>Cancelar</span>
+        </Link>
       </div>
     </Form>
   );

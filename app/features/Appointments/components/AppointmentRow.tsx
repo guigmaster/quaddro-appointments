@@ -1,5 +1,6 @@
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { Link } from '@remix-run/react';
+import utils from '~/_shared/utils';
 
 import type { Appointment } from '../Appointment.types';
 
@@ -14,10 +15,10 @@ export default function AppointmentRow({ appointment }: AppointmentRowProps) {
         <span className="text-lg">{appointment.title}</span>
         <div className="flex items-center justify-between">
           <span className="text-md text-zinc-500 italic">
-            {appointment.start_time}
+            {utils.formatToBrazilianDate(appointment.start_time)}
           </span>
           <span className="text-md text-zinc-500 italic">
-            {appointment.end_time}
+            {utils.formatToBrazilianDate(appointment.end_time)}
           </span>
         </div>
       </div>
